@@ -13,4 +13,4 @@ lua-mecab.o: lua-mecab.cpp
 	$(CXX) -fPIC -c lua-mecab.cpp -o lua-mecab.o
 
 install:
-	cp lua-mecab.so $(INST_LIBDIR)
+	cp lua-mecab.so $(INST_LIBDIR)/mecab.so
