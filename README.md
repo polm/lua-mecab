@@ -4,6 +4,14 @@ This is a lua wrapper for [Mecab](http://taku910.github.io/mecab/). It only
 supports the `Tagger` class's `parse` method, but generally that's all you
 need.
 
+## Install
+
+You can install it with LuaRocks like so:
+
+    luarocks install mecab
+
+Alternately build it using the instructions below. 
+
 ## Building
 
 Build with `make`. 
@@ -18,10 +26,12 @@ and you should be fine.
 
 Copy the `lua-mecab.so` file to your lua project and then use it like this:
 
-    mecab = require "lua-mecab"
-    parser = mecab:new("") -- you can pass mecab config options here, like "-Owakati"
+```lua
+mecab = require "mecab" -- if you build it yourself, use the .so name (lua-mecab) here
+parser = mecab:new("") -- you can pass mecab config options here, like "-Owakati"
 
-    print(parser.parse("吾輩は猫である"))
+print(parser:parse("吾輩は猫である"))
+```
 
 ## License
 
