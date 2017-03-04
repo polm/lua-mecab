@@ -11,7 +11,6 @@ extern "C" {
 
 using namespace std;
 
-// Functions that will create/destroy MyClass instances
 static int newTagger(lua_State* L)
 {
     int n = lua_gettop(L); // Number of arguments
@@ -67,22 +66,10 @@ static int parseMecab(lua_State* L)
     return 1;
 }
 
-static int destroyTagger(lua_State* L)
-{
-    MeCab::Tagger* c = checkTagger(L, 1);
-    delete c;
-    return 0;
-}
-
 static const luaL_Reg gTaggerFuncs[] = {
     { "new", newTagger },
     { "parse", parseMecab },
     { NULL, NULL }
-};
-
-static const luaL_Reg gTaggerMeta[] = {
-    {"__gc", destroyTagger},
-    {NULL, NULL}
 };
 
 // Registers the class for use in Lua
@@ -90,7 +77,6 @@ extern "C" int luaopen_mecab(lua_State *L)
 {  
     // Register metatable for user data in registry
     luaL_newmetatable(L, "Mecab.Tagger");
-    luaL_setfuncs(L, gTaggerMeta, 0);      
     luaL_setfuncs(L, gTaggerFuncs, 0);      
     lua_pushvalue(L, -1);
     lua_setfield(L, -2, "__index");  
