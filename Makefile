@@ -10,7 +10,7 @@ lua-mecab.so: lua-mecab.o
 	$(CXX) $(LIBFLAG) lua-mecab.o $(MECAB_SO) -o lua-mecab.so
 
 lua-mecab.o: lua-mecab.cpp
-	$(CXX) -fPIC -c lua-mecab.cpp -o lua-mecab.o
+	$(CXX) -I$(LUA_INCDIR) -fPIC -c lua-mecab.cpp -o lua-mecab.o
 
 install:
 	cp lua-mecab.so $(INST_LIBDIR)/mecab.so
