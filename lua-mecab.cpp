@@ -77,7 +77,11 @@ extern "C" int luaopen_mecab(lua_State *L)
 {  
     // Register metatable for user data in registry
     luaL_newmetatable(L, "Mecab.Tagger");
-    luaL_setfuncs(L, gTaggerFuncs, 0);      
+#if LUA_VERSION_NUM >= 502
+    luaL_setfuncs(L, gTaggerFuncs, 0);
+#else
+    luaL_register(L, NULL, gTaggerFuncs);
+#endif
     lua_pushvalue(L, -1);
     lua_setfield(L, -2, "__index");  
 
