@@ -6,6 +6,9 @@ LIBFLAG=-shared
 
 all: lua-mecab.so
 
+clean:
+	rm -f lua-mecab.so lua-mecab.o
+
 lua-mecab.so: lua-mecab.o
 	$(CXX) $(LIBFLAG) lua-mecab.o $(MECAB_LIBS) -o lua-mecab.so
 
