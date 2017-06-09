@@ -1,6 +1,8 @@
 INST_PREFIX = /usr
 INST_LIBDIR = $(INST_PREFIX)/lib/lua/5.3
 
+LUA_INCDIR = $(INST_PREFIX)/include
+
 MECAB_LIBS = `mecab-config --libs`
 LIBFLAG=-shared
 
